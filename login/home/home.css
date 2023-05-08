@@ -5,7 +5,7 @@ body {
     overflow-x:hidden;
   }
   ------
-  /**/.container {
+  /*This for gallery*/.container {
     position: relative;
     width: 90%;
     height: 100vh;
@@ -24,6 +24,7 @@ body {
   .gallery img {
     width: 100%;
     height: auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
   }
   
   .content {
