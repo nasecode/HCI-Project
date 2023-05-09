@@ -5,7 +5,8 @@ body {
     overflow-x:hidden;
   }
   ------
-  /*This for gallery*/.container {
+  /*This for gallery*/
+   .container {
     position: relative;
     width: 90%;
     height: 100vh;
@@ -28,6 +29,7 @@ body {
   }
   
   .content {
+    text-align: center;
     position: relative;
     z-index: 1;
     padding: 0px;
