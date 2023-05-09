@@ -11,23 +11,29 @@ body {
     width: 90%;
     height: 100vh;
   }
-  
-  .gallery {
+  @media only screen and (min-width: 1024px) {
+    .gallery {
     position: absolute;
-    top: 1;
     left: 0;
     bottom: 0;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 10px;
-  }
-  
+  }}
+  @media only screen and (max-width: 1000px) {
+    .gallery {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+  }}
   .gallery img {
     width: 100%;
     height: auto;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
   }
-  
   .content {
     text-align: center;
     position: relative;
