@@ -78,6 +78,8 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 20px;
+    position: relative;
+    z-index: 3;
   }
 
   header img {
