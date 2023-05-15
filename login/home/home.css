@@ -32,9 +32,14 @@ body {
     display: inline-grid;
     grid-template-columns: repeat(2, 1fr);
     height: 60%;
-    grid-gap: 10px;
-    
-}}
+    grid-gap: 10px;   
+   }
+   .content h1{
+      font-size: 50;
+   } 
+   .content p{
+    font-size: 40px;
+   }}
   .gallery img {
     width: 100%;
     height: auto;
@@ -45,9 +50,6 @@ body {
     position: relative;
     z-index: 1;
     padding: 0px;
-  }
-  .content p{
-    font-size:24px;
   }
   ------
   .image-container {
