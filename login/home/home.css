@@ -200,7 +200,10 @@ body {
     position: relative;
     z-index: 1;
   }
-  .content h1,p{
+  .content h1{
+    color: #ffffff;
+  }
+  .content p{
     color: #ffffff;
   }
   ------
