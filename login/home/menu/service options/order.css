@@ -317,6 +317,9 @@ body {
     align-items: end;
     display: grid;
   }
+  .details p{
+    text-shadow: rgb(0, 0, 0) 3px 0 5px;
+  }
   .menu-item h3 {
     margin: 0;
   }
