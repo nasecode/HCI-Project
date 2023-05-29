@@ -36,6 +36,15 @@ button[type="submit"] {
 	font-size: 16px;
 	cursor: pointer;
 }
+select#user-type{
+	font-size: 15px;
+	margin-top: 7px;
+	padding: 5px;
+	border-radius: 5px;
+}
+option {
+font-size: 15px;
+}
 h2 {
 	font-size:24px;
 }
@@ -91,6 +100,15 @@ button[type="submit"] {
 	border-radius: 10px;
 	font-size: 35px;
 	cursor: pointer;
+}
+select#user-type{
+	font-size: 40px;
+	margin-top: 7px;
+	padding: 10px;
+	border-radius: 15px;
+}
+option {
+font-size: 15px;
 }
 h2 {
 	font-size: 50px;
