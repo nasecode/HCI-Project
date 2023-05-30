@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Food2Go/Admin</title>
+  <link rel="icon" type="image/x-icon" href="../icons/f2g.png">
+</head>
+<style>
+html {
+  height: 100%;
+  background: linear-gradient(135deg, #de437d 0%,#5b44b9 100%);
+}
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+header {
+  background: linear-gradient(90deg, rgb(246, 149, 4) 0%, rgb(244, 46, 46) 48%, rgb(165, 57, 11) 100%);
+  color: #fff;
+  padding: 20px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+nav {
+  background-color: #f5f5f5;
+  padding: 10px;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 10px;
+}
+
+nav ul li a {
+  color: tomato;
+  text-decoration: none;
+}
+
+#content {
+  margin: 0;
+  padding: 20px;
+  min-height: calc(100vh - 140px);
+}
+
+h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+p {
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th, table td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+}
+
+table th {
+  background-color: #f5f5f5;
+  color: tomato;
+}
+
+button {
+  margin-top:10px;
+  margin-bottom:10px;
+  margin-right:10px;
+  padding: 6px 10px;
+  background-color: tomato;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #FF6347;
+}
+
+ul {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="file"],
+textarea {
+  background-color: white;
+  width: 99%;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+/* Orders */
+#content table {
+  margin-top: 10px;
+}
+
+/* Menu */
+#content h3 {
+  margin-top: 10px;
+}
+
+/* Inventory */
+#content table {
+  margin-top: 10px;
+}
+
+/* Delivery */
+#content h3 {
+  margin-top: 10px;
+}
+
+/* Sales */
+#content h3 {
+  margin-top: 10px;
+}
+
+/* Promotions */
+#content h3 {
+  margin-top: 10px;
+}
+
+#content form {
+  margin-top: 10px;
+}
+
+/* Feedback */
+#content table {
+  margin-top: 10px;
+}
+</style>
+<body>
+  <header>
+    <h1>Admin Dashboard</h1>
+    <nav style="font-size:20px;">
+      <ul>
+        <li><a href="#orders">Orders</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#inventory">Inventory</a></li>
+        <li><a href="#delivery">Delivery</a></li>
+        <li><a href="#sales">Sales</a></li>
+        <li><a href="#promotions">Promotions</a></li>
+        <li><a href="#feedback">Feedback</a></li>
+      </ul>
+    </nav>
+  </header>
+  <section id="content">
+    <!-- Content will be dynamically loaded here -->
+  </section>
+  <footer style="font-size:20px; text-align:center; color: #efefef;">
+    <h1>Food2Go</h1>
+   <p>
+    Project Purpose Only</p>
+   <p>
+    ©2023 All Rights Reserved</p>
+  </footer>
+  
+  <script >
+    // Example JavaScript code for dynamically loading content based on navigation
+document.addEventListener("DOMContentLoaded", function() {
+  // Initial content
+  loadContent("orders");
+
+  // Load content on navigation link click
+  var navLinks = document.querySelectorAll("nav ul li a");
+  navLinks.forEach(function(link) {
+    link.addEventListener("click", function(e) {
+      e.preventDefault();
+      var target = link.getAttribute("href").substring(1);
+      loadContent(target);
+    });
+  });
+});
+
+function loadContent(target) {
+  var contentSection = document.getElementById("content");
+  contentSection.innerHTML = "<h2>Loading...</h2>"; // Placeholder loading message
+
+  // Simulate AJAX request or fetch data from server based on target
+  setTimeout(function() {
+    // Example content for each section
+    var content = {
+  orders: `
+    <h1>Orders</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Customer Name</th>
+          <th>Items</th>
+          <th>Total</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Jay Cos</td>
+          <td>2 x Burger, 1 x French Fries</td>
+          <td>₱457</td>
+          <td>New</td>
+          <td>
+            <button>Edit</button>
+            <button>Cancel</button>
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Marie Lore</td>
+          <td>1 x Regular Pizza, 6 x Cola</td>
+          <td>₱749</td>
+          <td>In Progress</td>
+          <td>
+            <button>Edit</button>
+            <button>Cancel</button>
+          </td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Jepoy Pulce</td>
+          <td>2 x Lasagna, 4 x Cola</td>
+          <td>₱758</td>
+          <td>New</td>
+          <td>
+            <button>Edit</button>
+            <button>Cancel</button>
+          </td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Joker</td>
+          <td>5 x Lasagna, 10 x Cola</td>
+          <td>₱1895</td>
+          <td>New</td>
+          <td>
+            <button>Edit</button>
+            <button>Cancel</button>
+          </td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Batman</td>
+          <td>1 x Regular Pizza, 2 x Cola</td>
+          <td>₱649</td>
+          <td>New</td>
+          <td>
+            <button>Edit</button>
+            <button>Cancel</button>
+          </td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Barry Allen</td>
+          <td>2 x Burger, 1 x Cola</td>
+          <td>₱323$</td>
+          <td>New</td>
+          <td>
+            <button>Edit</button>
+            <button>Cancel</button>
+          </td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Jomar Nase</td>
+          <td>1 x Burger, 1 x Cola</td>
+          <td>₱174</td>
+          <td>In Progress</td>
+          <td>
+            <button>Edit</button>
+            <button>Cancel</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  `,
+  menu: `
+    <style>
+     select#category{
+	    font-size: 15px;
+      margin-bottom:10px;
+	    padding: 5px;
+	    border-radius: 5px;
+     }
+     option {
+     font-size: 15px;
+    }</style>
+    <h1>Menu</h1>
+    <h3>Categories</h3>
+    <select id="category" name="food category">
+					<option value="Main Course">Main Course</option>
+          <option value="Appetizer">Appetizer</option>
+					<option value="Drinks">Drinks</option>
+				</select>
+    <h3>Food Items</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Item ID</th>
+          <th>Name</th>
+          <th>Category</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Regular Pizza</td>
+          <td>Main Course</td>
+          <td>6 slices pizza</td>
+          <td>Price: ₱599</td>
+          <td>Available</td>
+          <td>
+            <button>Edit</button>
+            <button>Cancel</button>
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Fried Chicken</td>
+          <td>Main Course</td>
+          <td>8 pieces of chicken</td>
+          <td>Price: ₱649</td>
+          <td>Available</td>
+          <td>
+            <button>Edit</button>
+            <button>Cancel</button>
+          </td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Burger</td>
+          <td>Main Courses</td>
+          <td>Meaty Grilled Patty Burger</td>
+          <td>Price: ₱149</td>
+          <td>Available</td>
+          <td>
+            <button>Edit</button>
+            <button>Cancel</button>
+          </td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>French Fries</td>
+          <td>Appetizer</td>
+          <td>Good for 2 people</td>
+          <td>Price: ₱159</td>
+          <td>Available</td>
+          <td>
+            <button>Edit</button>
+            <button>Cancel</button>
+          </td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Lasagna</td>
+          <td>Main Courses</td>
+          <td>Good for 2</td>
+          <td>Price: ₱329</td>
+          <td>Available</td>
+          <td>
+            <button>Edit</button>
+            <button>Cancel</button>
+          </td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Cola</td>
+          <td>Drinks</td>
+          <td>Carbonated drinks</td>
+          <td>Price: ₱25</td>
+          <td>Available</td>
+          <td>
+            <button>Edit</button>
+            <button>Cancel</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  `,
+  inventory: `
+    <h1>Inventory</h1>
+    <h3>Ingredients</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Ingredient ID</th>
+          <th>Name</th>
+          <th>Stock Level</th>
+          <th>Supplier</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Beef Patty</td>
+          <td>10 kg</td>
+          <td>Supplier A</td>
+          <td>
+            <button>Edit</button>
+            <button>Cancel</button>
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Cheese</td>
+          <td>100 pieces</td>
+          <td>Supplier A</td>
+          <td>
+            <button>Edit</button>
+            <button>Cancel</button>
+          </td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Buns</td>
+          <td>100 pieces</td>
+          <td>Supplier B</td>
+          <td>
+            <button>Edit</button>
+            <button>Cancel</button>
+          </td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Fries</td>
+          <td>10 kg</td>
+          <td>Supplier B</td>
+          <td>
+            <button>Edit</button>
+            <button>Cancel</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  `,
+  delivery: `
+    <h1>Delivery</h1>
+    <h3>Assigned Deliveries</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Customer Name</th>
+          <th>Delivery Personnel</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Jacky Chan</td>
+          <td>Delivery Person A</td>
+          <td>In Transit</td>
+          <td>
+            <button>Edit</button>
+            <button>Cancel</button>
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>David Stele</td>
+          <td>Delivery Person B</td>
+          <td>Delivered</td>
+          <td>
+            <button>Edit</button>
+            <button>Cancel</button>
+          </td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Ruby dela Cruz</td>
+          <td>Delivery Person C</td>
+          <td>In Transit</td>
+          <td>
+            <button>Edit</button>
+            <button>Cancel</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  `,
+  sales: `
+  <div>
+    <h2 style="color:white;">Monthly sales</h2>
+</div>
+<svg class='container' width="529px" height="286px" viewBox="30 29 529 286">
+    <g id="graph-copy" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(30.000000, 27.000000)">
+        <g id="y_axis" font-size="11.0833333" font-family=".HelveticaNeueDeskInterface-Regular, .Helvetica Neue DeskInterface" fill="#FFFFFF" opacity="0.4" font-weight="normal">
+            <text id="0">
+                <tspan x="25.3008249" y="264.333333">0</tspan>
+            </text>
+            <text id="200">
+                <tspan x="12.7757572" y="232.666667">200K</tspan>
+            </text>
+            <text id="400">
+                <tspan x="12.7757572" y="201">400K</tspan>
+            </text>
+            <text id="600">
+                <tspan x="12.7757572" y="169.333333">600K</tspan>
+            </text>
+            <text id="800">
+                <tspan x="12.7757572" y="137.666667">800K</tspan>
+            </text>
+            <text id="1000">
+                <tspan x="6.51322328" y="106">1M</tspan>
+            </text>
+            <text id="1200">
+                <tspan x="6.51322328" y="74.3333333">1.2M</tspan>
+            </text>
+            <text id="1400">
+                <tspan x="6.51322328" y="42.6666667">1.4M</tspan>
+            </text>
+            <text id="1600">
+                <tspan x="6.51322328" y="11">1.6M</tspan>
+            </text>
+        </g>
+        <g id="GRAPHS" transform="translate(64.000000, 16.000000)" stroke-linecap="round" stroke-width="8" stroke-linejoin="round">
+            <polyline id="Sales" stroke="tomato" points="2.04739336 220 53.273159 100 99.2985782 130 137.175355 47 219.077488 47 256.947867 90 301.990521 47 349.080569 137 398.228672 137 432 91"></polyline>
+        </g>
+        <g id="x_axis" transform="translate(71.974046, 271.541667)" font-size="11.0833333" font-family=".HelveticaNeueDeskInterface-Regular, .Helvetica Neue DeskInterface" fill="#FFFFFF" opacity="0.4" font-weight="normal">
+            <text id="1">
+                <tspan x="0.396183206" y="11">Jan</tspan>
+            </text>
+            <text id="2">
+                <tspan x="39.2603361" y="11">Feb</tspan>
+            </text>
+            <text id="3">
+                <tspan x="78.8786567" y="11">Mar</tspan>
+            </text>
+            <text id="4">
+                <tspan x="118.496977" y="11">Apr</tspan>
+            </text>
+            <text id="5">
+                <tspan x="158.115298" y="11">May</tspan>
+            </text>
+            <text id="6">
+                <tspan x="197.733619" y="11">June</tspan>
+            </text>
+            <text id="7">
+                <tspan x="237.351939" y="11">July</tspan>
+            </text>
+            <text id="8">
+                <tspan x="276.97026" y="11">Aug</tspan>
+            </text>
+            <text id="9">
+                <tspan x="316.58858" y="11">Sept</tspan>
+            </text>
+            <text id="10">
+                <tspan x="359.229833" y="11">Oct</tspan>
+            </text>
+            <text id="11">
+                <tspan x="400.036703" y="11">Nov</tspan>
+            </text>
+            <text id="12">
+                <tspan x="438.466474" y="11">Dec</tspan>
+            </text>
+        </g>
+        <g id="grid" transform="translate(46.618321, 4.750000)" stroke="#FFFFFF" stroke-linecap="square" opacity="0.0800000057">
+            <path d="M0.396183206,1.1875 L478.991396,1.1875" id="Line"></path>
+            <path d="M0.396183206,32.8541667 L478.991396,32.8541667" id="Line"></path>
+            <path d="M0.396183206,64.5208333 L478.991396,64.5208333" id="Line"></path>
+            <path d="M0.396183206,96.1875 L478.991396,96.1875" id="Line"></path>
+            <path d="M0.396183206,127.854167 L478.991396,127.854167" id="Line"></path>
+            <path d="M0.396183206,159.520833 L478.991396,159.520833" id="Line"></path>
+            <path d="M0.396183206,191.1875 L478.991396,191.1875" id="Line"></path>
+            <path d="M0.396183206,222.854167 L478.991396,222.854167" id="Line"></path>
+            <path d="M0.396183206,254.520833 L478.991396,254.520833" id="Line"></path>
+        </g>
+    </g>
+</svg>
+<style>
+  html {
+  height: 100%;
+   background: -moz-linear-gradient(-45deg, #de437d 0%, #5b44b9 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(-45deg, #de437d 0%,#5b44b9 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(135deg, #de437d 0%,#5b44b9 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#de437d', endColorstr='#5b44b9',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+body {
+  font-family: 'open sans', sans-serif;
+  font-size: 3rem;
+  background-size: cover;
+  height: 100%;
+}
+
+svg {
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+  padding-top: 40px;
+}
+
+polyline {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: dash 5s ease-in forwards;
+  animation-iteration-count: 10;
+  animation-direction: alternate;
+}
+
+@keyframes dash{
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+
+p {
+  
+}
+.name {
+  font-size: .8rem;
+  font-weight: light;
+}
+</style>
+
+  `,
+  promotions: `
+    <h1>Promotions</h1>
+    <table>
+  <thead>
+    <tr>
+      <th>Promotion Name</th>
+      <th>Promotion Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Combo Meal</td>
+      <td>Buy a burger and fries, get a free drink</td>
+    </tr>
+    <tr>
+      <td>Happy Hour</td>
+      <td>20% off on all orders from 2 PM to 5 PM</td>
+    </tr>
+  </tbody>
+</table>
+    <h3>Create Promotion</h3>
+    <form>
+      <label for="promotionName">Promotion Name:</label>
+      <input type="text" id="promotionName" name="promotionName"><br>
+      <label for="promotionDetails">Promotion Details:</label>
+      <textarea id="promotionDetails" name="promotionDetails"></textarea><br>
+      <label for="promotionStartDate">Start Date:</label>
+      <input type="date" id="promotionStartDate" name="promotionStartDate"><br>
+      <label for="promotionEndDate">End Date:</label>
+      <input type="date" id="promotionEndDate" name="promotionEndDate"><br>
+      <label for="promotionFile">Promotion File:</label>
+      <input type="file" id="promotionFile" name="promotionFile"><br>
+      <button>Create Promotion</button>
+    </form>
+  `,
+  feedback: `
+    <h1>Feedback</h1>
+    <h3>Customer Feedback</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Feedback ID</th>
+          <th>Customer Name</th>
+          <th>Message</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>David Stele</td>
+          <td>Fast delivery with good services!</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>John Smith</td>
+          <td>Gonna order here again :)</td>
+        </tr>
+      </tbody>
+    </table>
+  `
+};
+
+
+    if (content[target]) {
+      contentSection.innerHTML = content[target];
+    } else {
+      contentSection.innerHTML = "<h2>404 - Page Not Found</h2>";
+    }
+  }, 500); // Simulate a small delay for AJAX/fetch request
+}
+  </script>
+</body>
+</html>
