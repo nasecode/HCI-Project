@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Food2Go/Order</title>
+    <link rel="stylesheet" type="text/css" href="order.css">
+    <link rel="icon" type="image/x-icon" href="../../../icons/f2g.png">
+  </head>
+  <body>
+    <header> 
+      <img src="../../../icons/f2g.png" alt="Logo">
+      <form class="search-form">
+        <input type="text" placeholder="Search...">
+        <button type="submit">Go</button>
+      </form>
+      <nav>
+        <div class="dropdown">
+          <button class="dropbtn">Menu</button>
+          <div class="dropdown-content">
+            <a href="../../home.html">Home</a>
+            <a href="#">About</a>
+            <a href="../services.html">Services</a>
+            <a href="#footer">Contact</a>
+            <a href="../../../sign in.html">SignIn</a>
+          </div>
+        </div>
+      </nav>   
+    </header>
+  <main>
+    <div class="slideshow-container">
+        <div class="mySlides fade">
+          <img src="../../../background/bg1.jpg" style="width:100%">
+        </div>
+        <div class="mySlides fade">
+          <img src="../../../background/bg2.jpg" style="width:100%">
+        </div>       
+        <div class="mySlides fade">
+          <img src="../../../background/bg3.jpg" style="width:100%">
+        </div>      
+    </div>
+    <div Class="Cart button">
+    <button class="cart-button" onclick="openCart()">View Cart</button>
+    </div>
+    </div>
+    <div class="menu-container">
+      <div class="menu-item">
+        <img src="Item Menu/menu1.jpg" alt="menu">
+        <div class="details">
+        <h3>Regular Pizza</h3>
+        <p>6 slices pizza</p>
+        <p>Price: ₱599</p>
+        <button onclick="addToCart('Regular Pizza', 599)">Add to Cart</button>
+      </div>
+      </div>
+      <div class="menu-item">
+        <img src="Item Menu/menu2.jpg" alt="menu">
+        <div class="details">
+        <h3>Fried Chicken</h3>
+        <p>8 pieces of chicken</p>
+        <p>Price: ₱649</p>
+        <button onclick="addToCart('Fried Chicken', 649)">Add to Cart</button>
+      </div>
+      </div>
+      <div class="menu-item">
+        <img src="Item Menu/menu3.jpg" alt="menu">
+        <div class="details">
+        <h3>Burger</h3>
+        <p>Meaty Grilled Patty Burger</p>
+        <p>Price: ₱149</p>
+        <button onclick="addToCart('Burger', 149)">Add to Cart</button>
+      </div>
+      </div>
+      <div class="menu-item">
+        <img src="Item Menu/menu4.jpg" alt="menu">
+        <div class="details">
+        <h3>French Fries</h3>
+        <p>Good for 2 people</p>
+        <p>Price: ₱159</p>
+        <button onclick="addToCart('French Fries', 159)">Add to Cart</button>
+      </div>
+      </div>
+      <div class="menu-item">
+        <img src="Item Menu/menu5.jpg" alt="menu">
+        <div class="details">
+        <h3>Lasagna</h3>
+        <p>Good for 2</p>
+        <p>Price: ₱329</p>
+        <button onclick="addToCart('Lasagna', 329)">Add to Cart</button>
+      </div>
+      </div>
+      <div class="menu-item">
+        <img src="Item Menu/menu6.jpg" alt="menu">
+        <div class="details">
+        <h3>Cola</h3>
+        <p>Carbonated drinks</p>
+        <p>Price: ₱25</p>
+        <button onclick="addToCart('Cola', 25)">Add to Cart</button>
+      </div>
+      </div>
+    </div>
+    <div id="cart-container" class="cart-container">
+      <h2>Cart</h2>
+      <div id="cart-items"></div>
+      
+      <div class="form-container">
+        <label class="form-label" for="name">Name</label>
+        <input class="form-input" type="text" id="name">
+        
+        <label class="form-label" for="address">Address</label>
+        <input class="form-input" type="text" id="address">
+        
+        <label class="form-label" for="contact">Contact Number</label>
+        <input class="form-input" type="tel" id="contact">
+        
+        <label class="form-label" for="quantity">Quantity</label>
+        <input class="form-input" type="number" id="quantity" min="1" value="1">
+      </div>
+      
+      <button class="place-order-button" onclick="placeOrder()">Place Order</button>
+      <div id="success-message" class="success-message" style="display: none;">
+        Order placed successfully!
+      </div>
+      <div id="total-amount" class="total-amount" style="display: none;"></div>
+    </div>
+    <script>
+     //items
+     // JavaScript code for cart functionality
+    var cart = []; // Array to store cart items
+    
+    function addToCart(item, price) {
+      cart.push({ item: item, price: price }); // Add item and price to the cart array
+    }
+    
+    function openCart() {
+      var cartContainer = document.getElementById("cart-container");
+      var cartItems = document.getElementById("cart-items");
+      var totalAmount = document.getElementById("total-amount");
+      cartItems.innerHTML = ""; // Clear existing cart items
+      
+      // Loop through the cart array and create cart item elements
+      for (var i = 0; i < cart.length; i++) {
+        var cartItem = document.createElement("div");
+        cartItem.classList.add("cart-item");
+        
+        var spanItem = document.createElement("span");
+        spanItem.innerHTML = cart[i].item;
+        
+        var spanPrice = document.createElement("span");
+        spanPrice.innerHTML = "$" + cart[i].price;
+        
+        cartItem.appendChild(spanItem);
+        cartItem.appendChild(spanPrice);
+        cartItems.appendChild(cartItem);
+      }
+      
+      // Calculate and display the total amount
+      var total = cart.reduce(function (acc, curr) {
+        return acc + curr.price;
+      }, 0);
+      totalAmount.innerHTML = "Total Amount: ₱" + total;
+      
+      cartContainer.style.display = "block"; // Display the cart popup
+      totalAmount.style.display = "block"; // Display the total amount
+    }
+    
+    function placeOrder() {
+      var name = document.getElementById("name").value;
+      var address = document.getElementById("address").value;
+      var contact = document.getElementById("contact").value;
+      var quantity = document.getElementById("quantity").value;
+      
+      // You can add your backend processing logic here
+      // For this example, we'll simply show a success message
+      
+      document.getElementById("success-message").style.display = "block";
+      document.getElementById("total-amount").style.display = "none";
+      cart = []; // Clear the cart array
+      document.getElementById("cart-container").style.display = "none"; // Hide the cart popup
+      
+      // Reset form fields
+      document.getElementById("name").value = "";
+      document.getElementById("address").value = "";
+      document.getElementById("contact").value = "";
+      document.getElementById("quantity").value = "1";
+    }
+     //slides
+     var slideIndex = 0;
+     showSlides();
+     function showSlides() {
+     var i;
+     var slides = document.getElementsByClassName("mySlides");
+     for (i = 0; i < slides.length; i++) {
+     slides[i].classList.remove("active");
+     }  
+     slideIndex++;
+     if (slideIndex > slides.length) {slideIndex = 1}
+     slides[slideIndex-1].classList.add("active");
+     setTimeout(showSlides, 5000);
+     }
+    </script>
+  </main>
+  <footer id="footer" class="footer">
+    <div class="icon-wrapper">
+      <a href="mailto:foodtogo@gmail.com">
+      <img src="../../../icons/email.jpg" alt="Icon" class="icon"></a>
+    </div>
+    <div class="icon-wrapper">     
+      <a href="tel:000000000">
+      <img src="../../../icons/telephone.jpg" alt="Icon" class="icon"></a>
+    </div>
+    <div class="icon-wrapper">
+      <a href="#">
+      <img src="../../../icons/team.jpg" alt="Icon" class="icon"></a>
+    </div>
+    <div class="icon-wrapper">      
+      <a href="https://www.facebook.com">
+      <img src="../../../icons/facebook.jpg" alt="Icon" class="icon"></a>
+    </div>
+    <div class="icon-wrapper">
+      <a href="https://twitter.com">
+      <img src="../../../icons/twitter.jpg" alt="Icon" class="icon"></a>
+    </div>
+    <div class="icon-wrapper">       
+      <a href="https://www.instagram.com">
+      <img src="../../../icons/instagram.jpg" alt="Icon" class="icon"></a>
+    </div>
+ <div class="content">
+   <h1>Food2Go</h1>
+   <p>
+    Project Purpose Only</p>
+   <p>
+    ©2023 All Rights Reserved</p>
+ </div> 
+</footer>
+  </body>
+  
+</html>
